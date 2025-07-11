@@ -2,18 +2,22 @@
 
 June 18, 2025
 
+Updated: July 11, 2025 rk
+
 ## Grab the class files
 
 Clone the class repository into a _temporary_ folder. We will copy the
 contents of this folder into our working folder after we get setup for
 our environment.
 
-    git clone https://github.com/ed-donner/llm_engineering.git
+  git clone https://github.com/ed-donner/llm_engineering.git
 
 ## Prepare our working environment
 
-    uv init llm_engineering --python 3.12
-    cd llm_engineering
+  brew install uv
+  brew install node   # I think Jupyter needs this
+  uv init llm_engineering --python 3.12
+  cd llm_engineering
 
 ## Add `[tool.uv]` section to bottom of `pyproject.toml` to be compatible with macOS
 
@@ -29,7 +33,7 @@ required-environments = [
 
 ## Set up virtual environment for Python 3.12
 
-    uv sync --upgrade
+  uv sync --upgrade
 
 ## Activate environment
 
@@ -43,11 +47,11 @@ alias de='deactivate'
 
 Now I can type the following to activate the environment.
 
-    ae
+  ae
 
 Check to make sure you are now running Python 3.11
 
-    python3 --version
+  python3 --version
 
 ## Copy the class files to the working folder
 
@@ -57,17 +61,17 @@ class files again if needed.
 
 ## Add the required files to our **activated** environment
 
-    uv add docarray
-    uv add python-dotenv
-    uv add -r requirements.txt
+  uv add docarray
+  uv add python-dotenv
+  uv add -r requirements.txt
 
 ## Test the environment
 
-     jupyter lab
+  jupyter lab
 
 You can type the following to deactivate the environment if you added the alias
 
-    de
+  de
 
 ## Convert Existing Environment
 
@@ -109,9 +113,9 @@ required-environments = [
 
 ### Add the required files to our **activated** environment
 
-    uv add docarray
-    uv add python-dotenv
-    uv add -r requirements.txt
+  uv add docarray
+  uv add python-dotenv
+  uv add -r requirements.txt
 
 ## Appendix
 
@@ -128,11 +132,11 @@ from rich import print as rprint
 
 
 def main():
-    # Create a console instance
-    # console = Console()
+  # Create a console instance
+  # console = Console()
 
-    # Sample Markdown text
-    markdown_text = """
+  # Sample Markdown text
+  markdown_text = """
 # Hello, Rich!
 
 This is **bold** and this is *italic*.
