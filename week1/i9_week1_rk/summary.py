@@ -12,7 +12,7 @@ from openai import OpenAI
 from rich import print as rprint
 from rich.markdown import Markdown
 
-# The large LLM to run
+# The LLM to run
 MODEL = "gemma3n:e2b"
 # MODEL = "mistral-small3.2:24b-instruct-2506-q8_0"
 # MODEL = "gemma3:27b-it-qat"
