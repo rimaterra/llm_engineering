@@ -49,7 +49,7 @@ Now I can type the following to activate the environment.
 
   ae
 
-Check to make sure you are now running Python 3.11
+Check to make sure you are now running Python 3.12
 
   python3 --version
 
