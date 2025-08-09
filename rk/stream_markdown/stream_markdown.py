@@ -1,20 +1,31 @@
 # /// script
 # requires-python = ">=3.12"
 # dependencies = [
+#     "google.generativeai",
+#     "python-dotenv",
 #     "textual",
 #     "openai",
 # ]
 # ///
+import os
 import argparse
 import asyncio
 import sys
 import signal
+from dotenv import load_dotenv
 from textual.app import App, ComposeResult
 from textual.widgets import Markdown
 from openai import OpenAI
+import google.generativeai
+
+load_dotenv(override=True)
+google_api_key = os.getenv("GOOGLE_AI_API_KEY")
 
 # The LLM to run
-MODEL = "gemma3n:e2b"
+# MODEL = "gemma3n:e2b"
+MODEL = "gemini-2.5-flash-lite"
+# MODEL = "gemini-2.5-flash"
+# MODEL = "gemini-2.5-pro"
 # MODEL = "mistral-small3.2:24b-instruct-2506-q8_0"
 # MODEL = "gemma3:27b-it-qat"
 # MODEL = "mistral-small3.2"
@@ -22,7 +33,8 @@ MODEL = "gemma3n:e2b"
 
 system_prompt = "You are a helpful expert Python programmer. \
 Respond in markdown."
-user_prompt = "Hello"
+# user_prompt = "Hello. Who are you?"
+user_prompt = "What does temperature control in large language models?"
 
 
 class MDApp(App):
@@ -54,7 +66,13 @@ class MDApp(App):
 
         try:
             # Initialize OpenAI client for ollama
-            client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+            # client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+
+            # Initialize OpenAI client for Google Gemini
+            client = OpenAI(
+                api_key=google_api_key,
+                base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+            )
 
             # Create streaming completion
             stream = client.chat.completions.create(
