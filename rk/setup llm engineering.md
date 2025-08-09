@@ -116,6 +116,7 @@ required-environments = [
 
   uv add docarray
   uv add python-dotenv
+  uv add google-generativeai
   uv add -r requirements.txt
 
 ## Appendix
