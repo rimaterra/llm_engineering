@@ -36,7 +36,8 @@ else:
 # Connect to OpenAI
 
 openai = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
-MODEL = "gemma3n:e2b"
+# MODEL = "gemma3:4b-it-qat"
+MODEL = "gemma3n"
 
 # This is the set up code for Gemini
 # Having problems with Google Gemini setup? Then just ignore this cell; when we use Gemini, I'll give you an alternative that bypasses this library altogether
@@ -75,10 +76,14 @@ gemini_via_openai_client = OpenAI(
 response = gemini_via_openai_client.chat.completions.create(
     model="gemini-2.5-flash", messages=prompts, temperature=0.9
 )
-rprint(Markdown("# Response from Flash"))
+rprint(Markdown("# Response from Gemini Flash"))
+rprint(Markdown("## Tell a light-hearted joke for an audience of Data Scientists"))
 rprint(Markdown(response.choices[0].message.content))
 
-# To be serious! GPT-4o-mini with the original question
+# Gemma3n with the original question
+
+rprint(Markdown("# Response from gemma3n"))
+rprint(Markdown("## Tell a light-hearted joke for an audience of Data Scientists"))
 
 prompts = [
     {
@@ -87,7 +92,8 @@ prompts = [
     },
     {
         "role": "user",
-        "content": "Who are you? Please respond in Markdown.",
+        "content": "Tell a light-hearted joke for an audience of Data Scientists",
+        # "content": "Who are you? Please respond in Markdown.",
         # "content": "How do I decide if a business problem is suitable for an LLM solution? Please respond in Markdown.",
     },
 ]
