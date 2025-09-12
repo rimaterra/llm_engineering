@@ -33,6 +33,7 @@ required-environments = [
 
 ## Set up virtual environment for Python 3.12
 
+  uv python pin 3.12
   uv sync --upgrade
 
 ## Activate environment
